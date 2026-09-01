@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.20)
+project(pulserisk_mc LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 20)
+add_library(pulserisk_mc STATIC jump_diffusion.cpp)
+target_include_directories(pulserisk_mc PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

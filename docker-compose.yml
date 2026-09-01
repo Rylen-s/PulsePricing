@@ -1,0 +1,18 @@
+services:
+  api:
+    build: .
+    ports: ["8000:8000"]
+    environment:
+      REDIS_URL: redis://redis:6379/0
+      DATABASE_URL: postgresql+asyncpg://pulserisk:pulserisk@postgres:5432/pulserisk
+    depends_on: [redis, postgres]
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: pulserisk
+      POSTGRES_USER: pulserisk
+      POSTGRES_PASSWORD: pulserisk
+    ports: ["5432:5432"]
